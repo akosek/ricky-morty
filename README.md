@@ -1,6 +1,7 @@
 # ricky-morty
 
-React Native APP was created by expo
+React Native APP to search for Ricky Morty Characters, It uses Ricky Morty GraphQL API. 
+For faster development App was created with expo client 
 
-Run Project:
-npm start
+In the project directory, you can run:
+### `npm start`
