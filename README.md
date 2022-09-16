@@ -1,7 +1,8 @@
 # ricky-morty
 
-React Native APP to search for Ricky Morty Characters,\ 
-It uses Ricky Morty GraphQL API.\
+React Native APP to search for Ricky Morty Characters.
+
+It uses Ricky Morty GraphQL API.
 
 For faster development App was created with expo client 
 
