@@ -6,7 +6,7 @@ It uses [Ricky Morty GraphQL API](https://rickandmortyapi.com/documentation/#gra
 
 For faster development App was created with expo client 
 
-# Instal dependecies
+# Run the project
 In order to get all required packages, please run: 
 ### `npm install`
 
