@@ -1,4 +1,4 @@
-import { persistReducer, persistCombineReducers } from "redux-persist";
+import { persistReducer } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { combineReducers } from "redux";
 
@@ -13,10 +13,6 @@ const persistConfig = {
 const appReducer = combineReducers({
   characters: persistReducer(persistConfig, characters),
 });
-
-// const appReducer = persistCombineReducers(persistConfig, {
-//   characters: persistReducer<TListState>(persistConfig, characters),
-// });
 
 const rootReducer = (state: TListState, action) => {
   return appReducer(state, action);
