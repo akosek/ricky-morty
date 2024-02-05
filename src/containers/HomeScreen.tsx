@@ -3,11 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/rootReducer";
 import { TCharacterItem } from "../../types";
-import {
-  setData,
-  setStatusFilter,
-  setPageCount,
-} from "../redux/ducks/characters";
+import { setStatusFilter, setPageCount } from "../redux/ducks/characters";
 
 // Components
 import { StyleSheet, View } from "react-native";
@@ -30,11 +26,8 @@ const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [allPages, setAllPages] = useState(0);
-  const [input, setInput] = useState(null);
-
-  const dataList = useSelector<RootState, TCharacterItem[]>(
-    (state) => state.characters.dataList
-  );
+  const [input, setInput] = useState<string | null>(null);
+  const [homeData, setHomeData] = useState<TCharacterItem[]>([]);
 
   const selectedFilter = useSelector<RootState, string>(
     (state) => state.characters.selectedFilter
@@ -56,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
         const charactersData = data?.characters.results;
         const dataInfo = data?.characters.info;
         setAllPages(dataInfo);
-        dispatch(setData(charactersData));
+        setHomeData(charactersData);
       },
     }
   );
@@ -69,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
         const searchedData = data?.characters.results;
         const dataInfo = data?.characters.info;
         setAllPages(dataInfo);
-        dispatch(setData(searchedData));
+        setHomeData(searchedData);
       },
     }
   );
@@ -83,7 +76,7 @@ const HomeScreen = ({ navigation }) => {
         const dataInfo = data?.characters.info;
         setAllPages(dataInfo);
         if (filteredData) {
-          dispatch(setData(filteredData));
+          setHomeData(filteredData);
         }
       },
     }
@@ -165,7 +158,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <StatusFilter onSelect={(value) => handleFilterSearch(value)} />
       <ItemList
-        listData={dataList}
+        listData={homeData}
         navigation={navigation}
         listFooter={renderFooter}
         columns={listView}
